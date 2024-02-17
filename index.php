@@ -1,14 +1,30 @@
+<?php
+$host = 'localhost';
+$database = 'blog';
+$port = 5432;
+$user = 'postgres';
+$password = 'damzymike';
+
+$db_handle = pg_connect("host=localhost dbname=blog user=postgres password=damzymike");
+
+if ($db_handle) {
+  echo 'connection success';
+} else {
+  echo "<h1 class='text-center'>Server ERROR</h1>";
+  exit();
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to PHP's blog</title>
-</head>
+<?php include('templates/header.php') ?>
 
 <body>
-  <h1>The best blog in the world</h1>
+  <?php include('templates/nav.php') ?>
+  <h1 class="text-center text-3xl font-bold">The best blog in the world</h1>
+  <?php include('templates/footer.php') ?>
 </body>
 
 </html>
