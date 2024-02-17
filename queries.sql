@@ -41,3 +41,6 @@ WHERE id = 1
 DELETE FROM users
 WHERE id = 1
 
+--Add  timestamp column
+ALTER TABLE users
+ADD date_joined TIMESTAMP DEFAULT NOW()
