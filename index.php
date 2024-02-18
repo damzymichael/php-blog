@@ -1,7 +1,7 @@
 <?php
 include('config/db_connect.php');
 
-//Change query later to return some documents 
+//Change query to return some documents 
 //and also include author, likes and comments
 // $query = 'SELECT * FROM blogs ORDER BY created_at';
 $query = 'SELECT * FROM blogs';
@@ -26,6 +26,7 @@ pg_close($connection);
     <h2 class="text-center my-8 font-bold text-5xl text-red-700">No blogs yet.</h2>
   <?php else : ?>
     <!-- Show random Blog posts from different users -->
+    <h1 class="font-bold text-3xl">Blogs from other users</h1>
     <?php foreach ($blogs as $blog) : ?>
       <h1><?php echo htmlspecialchars($blog['title']) ?></h1>
       <p><?php echo htmlspecialchars($blog['blog_content']) ?></p>
@@ -34,6 +35,7 @@ pg_close($connection);
   <?php endif; ?>
 
   <?php include('templates/footer.php') ?>
+
 </body>
 
 </html>

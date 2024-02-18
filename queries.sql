@@ -5,6 +5,7 @@ CREATE TABLE users (
   fullname VARCHAR(50) NOT NULL,
   passkey VARCHAR(100) NOT NULL
 )
+--date joined added to columns
 
 CREATE TABLE blogs (
   id SERIAL PRIMARY KEY,
@@ -43,4 +44,4 @@ WHERE id = 1
 
 --Add  timestamp column
 ALTER TABLE users
-ADD date_joined TIMESTAMP DEFAULT NOW()
+ADD date_joined TIMESTAMP DEFAULT NOW() --done
