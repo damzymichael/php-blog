@@ -10,4 +10,4 @@ if (!$connection) {
             Server error, pleae try again later
           </h1>";
   exit();
-}
+};

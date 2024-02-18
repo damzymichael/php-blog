@@ -6,6 +6,8 @@ CREATE TABLE users (
   passkey VARCHAR(100) NOT NULL
 )
 --date joined added to columns
+--ALTER TABLE users ADD UNIQUE (email)
+-- add unigue to email field 
 
 CREATE TABLE blogs (
   id SERIAL PRIMARY KEY,
