@@ -1,4 +1,7 @@
 <?php
+//use in production
+// ini_set('display_errors', 0);
+
 $host = 'localhost';
 $database = 'blog';
 $port = 5432;

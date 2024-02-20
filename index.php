@@ -1,5 +1,12 @@
 <?php
 include('config/db_connect.php');
+include('config/init.php');
+
+if ($_SERVER['QUERY_STRING'] === 'signout') {
+  unset($_SESSION['user']);
+  setcookie('PHPSESSID', '', time() - 3600, '/');
+  header('Location: index.php');
+}
 
 //Change query to return some documents 
 //and also include author, likes and comments
@@ -20,6 +27,7 @@ pg_close($connection);
 
 <body>
   <?php include('templates/nav.php') ?>
+  <h2 class="text-xl text-green-400"><?php echo $logged_in_user !== 'None' ? "Welcome " . $logged_in_user['fullname'] : 'Welcome Guest' ?></h2>
   <h1 class="text-center text-3xl font-bold">The best blog in the world</h1>
   <!-- Show when there are no blogs  -->
   <?php if (empty($blogs)) : ?>

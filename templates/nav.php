@@ -1,24 +1,32 @@
 <?php
+//CANT DO ANY REDIRECTS HERE
+include('config/init.php');
+
 $links = [
   0 => ['title' => 'My blogs', 'link' => 'my-blogs.php'],
   1 => ['title' => 'Add blog', 'link' => 'add-blog.php'],
-  2 => ['title' => 'Sign out', 'link' => 'signout.php'],
+  2 => ['title' => 'Sign out', 'link' => 'index.php?signout'],
   3 => ['title' => 'Login', 'link' => 'login.php'],
   4 => ['title' => 'Sign up', 'link' => 'signup.php']
 ];
 
-$curr_page_url = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], "/") + 1);
-// echo "The current page link is: " . $curr_page_url;
-
+//Add underline classname to current link
 function underline_curr_link($link)
 {
   global  $curr_page_url;
   return $link['link'] ===  $curr_page_url ? 'underline' : '';
 };
 
-if($curr_page_url === 'login.php' || $curr_page_url === 'signup.php') {
+if ($curr_page_url === 'login.php' || $curr_page_url === 'signup.php') {
   $links = array_slice($links, 3);
 }
+
+if ($logged_in_user !== 'None') {
+  array_splice($links, 3);
+} else {
+  $links = array_slice($links, 3);
+}
+
 ?>
 
 <header class="flex justify-between p-3 px-0">

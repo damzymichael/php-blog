@@ -1,5 +1,7 @@
 <?php
 include('config/db_connect.php');
+include('config/init.php');
+
 $email = $fullname = $password_1 =  $password_2 = '';
 $errors = array('email' => '', 'fullname' => '', 'password_1' => '', 'password_2' => '');
 
@@ -43,15 +45,18 @@ if (isset($_POST['submit'])) {
     $capitalized_name = join(' ', $fullname_array);
 
     $email = pg_escape_string($connection, $email);
-    $fullname = pg_escape_string($connection, $fullname);
+    $fullname = pg_escape_string($connection, $capitalized_name);
     $passsword = pg_escape_string($connection, $password_2);
     $hash = password_hash($passsword, PASSWORD_DEFAULT);
 
-    $query = "INSERT INTO users(email, fullname, passkey) VALUES('$email', '$fullname', '$hash')";
-    if (pg_query($connection, $query)) {
-      header('Location: login.php');
+
+    $query = "INSERT INTO users(email, fullname, passkey) VALUES('$email', '$fullname', '$hash') RETURNING email";
+    $result = pg_query($connection, $query);
+    if ($result) {
+      $ret_email = pg_fetch_result($result, 'email');
+      header("Location: login.php?email=$ret_email");
     } else {
-      echo 'Error occured while signing in';
+      echo 'Error occured while signing up';
     }
   };
 }
