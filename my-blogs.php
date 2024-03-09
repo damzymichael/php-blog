@@ -1,4 +1,6 @@
 <?php
+include('config/db_connect.php');
+include('config/init.php');
 
 ?>
 

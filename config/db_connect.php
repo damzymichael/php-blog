@@ -14,3 +14,6 @@ if (!$connection) {
           </h1>";
   exit();
 };
+?>
+<!-- DATABASE CONNECTION  -->
+<!-- RETURN ERROR IF DATABASE DOESNT CONNECT  -->

@@ -1,20 +1,19 @@
 --Creating tables 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  email VARCHAR(50) NOT NULL,
+  email VARCHAR(50) UNIQUE NOT NULL,
   fullname VARCHAR(50) NOT NULL,
-  passkey VARCHAR(100) NOT NULL
+  passkey VARCHAR(100) NOT NULL,
+  date_joined TIMESTAMP DEFAULT NOW()
 )
---date joined added to columns
---ALTER TABLE users ADD UNIQUE (email)
--- add unigue to email field 
 
 CREATE TABLE blogs (
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES  users(id),
-  title VARCHAR(50) NOT NULL,
+  title VARCHAR(255) NOT NULL,
   content TEXT NOT NULL,
   image_link TEXT
+  date_created TIMESTAMP DEFAULT NOW()
 )
 
 CREATE TABLE likes(
@@ -28,6 +27,7 @@ CREATE TABLE comments(
   user_id INTEGER REFERENCES  users(id),
   blog_id INTEGER REFERENCES blogs(id),
   content TEXT NOT NULL
+  date_created TIMESTAMP DEFAULT NOW()
 )
 
 --Inserting data

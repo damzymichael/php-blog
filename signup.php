@@ -56,6 +56,7 @@ if (isset($_POST['submit'])) {
       $ret_email = pg_fetch_result($result, 'email');
       header("Location: login.php?email=$ret_email");
     } else {
+      //! Change to error displaying in the DOM
       echo 'Error occured while signing up';
     }
   };
@@ -81,7 +82,6 @@ if (isset($_POST['submit'])) {
     <input type="password" name="password_2" placeholder="Repeat password" class="border outline-none p-3 rounded-md" value="<?php echo $password_2 ?>">
     <p class="text-red-600"><?php echo $errors['password_2'] ?></p>
     <input type="submit" name="submit" class="border bg-blue-700 self-center p-2 rounded-lg text-white" />
-    <p class="text-red-600"><?php echo $errors['password_2'] ?></p>
 
   </form>
 

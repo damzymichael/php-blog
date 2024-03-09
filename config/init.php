@@ -7,9 +7,13 @@ $curr_page_url = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"]
 // echo "The current page link is: " . $curr_page_url;
 
 
-//Redirect if there's an active user
+//Redirect from login or signup page if there's an active user in session
 if ($curr_page_url === 'login.php' || $curr_page_url === 'signup.php') {
   if ($logged_in_user !== 'None') {
     header('Location: index.php');
   }
 }
+
+?>
+<!-- SESSION INITIALIZATION  -->
+<!-- REDIRECT IF EXISTING USER  -->

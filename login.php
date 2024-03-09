@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
       $user = pg_fetch_array($result);
       if (password_verify($password, $user['passkey'])) {
         //Save User to session
-        print_r($user);
+        // print_r($user);
         $_SESSION['user'] = $user;
         header('Location: index.php');
       } else {
@@ -43,6 +43,7 @@ if (isset($_POST['submit'])) {
     }
   }
 }
+
 ?>
 
 <!DOCTYPE html>
