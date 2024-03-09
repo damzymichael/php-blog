@@ -47,3 +47,6 @@ WHERE id = 1
 --Add  timestamp column
 ALTER TABLE users
 ADD date_joined TIMESTAMP DEFAULT NOW() --done
+
+ALTER TABLE blogs
+ADD COLUMN date_created TIMESTAMP DEFAULT NOW()

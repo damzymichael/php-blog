@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
   $email_signup = '';
 
   $email = pg_escape_string($connection, trim($_POST['email']));
-  $password = trim($_POST['password']);
+  $password = pg_escape_string($connection, trim($_POST['password']));
 
   // Check email
   if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -38,12 +38,13 @@ if (isset($_POST['submit'])) {
         //Show error
         $error = true;
       }
+      pg_free_result($result);
     } else {
       $error = true;
     }
   }
 }
-
+pg_close($connection);
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +61,7 @@ if (isset($_POST['submit'])) {
 
   <h1 class="font-bold text-2xl mb-4">Login to your account</h1>
   <form action="login.php" class="flex flex-col gap-3" method="POST">
-    <input type="email" name="email" placeholder="Enter your email" class="border outline-none p-3 rounded-md" required value="<?php echo $email_signup ?>">
+    <input type="email" name="email" placeholder="Enter your email" class="border outline-none p-3 rounded-md" required value="<?php echo $email ?>">
     <p class="text-red-600"><?php echo $errors['email'] ?></p>
     <input type="password" name="password" placeholder="Enter your password" required class="border outline-none p-3 rounded-md">
     <?php echo $error ? "<p class='error-notify text-red-500 font-medium text-center'>Invalid username or password, try again</p>" : '' ?>

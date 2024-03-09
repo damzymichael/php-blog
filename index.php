@@ -27,18 +27,17 @@ pg_close($connection);
 
 <body>
   <?php include('templates/nav.php') ?>
-  <h2 class="text-xl text-green-400"><?php echo $logged_in_user !== 'None' ? "Welcome " . $logged_in_user['fullname'] : 'Welcome Guest' ?></h2>
-  <h1 class="text-center text-3xl font-bold">The best blog in the world</h1>
+  <h2 class="text-xl text-green-400 mb-4"><?php echo $logged_in_user !== 'None' ? "Welcome " . $logged_in_user['fullname'] : 'Welcome Guest' ?></h2>
   <!-- Show when there are no blogs  -->
   <?php if (empty($blogs)) : ?>
     <h2 class="text-center my-8 font-bold text-5xl text-red-700">No blogs yet.</h2>
   <?php else : ?>
     <!-- Show random Blog posts from different users -->
-    <h1 class="font-bold text-3xl">Blogs from other users</h1>
+    <h1 class="font-bold text-3xl mb-4 text-center">Blogs from other users</h1>
     <?php foreach ($blogs as $blog) : ?>
       <h1><?php echo htmlspecialchars($blog['title']) ?></h1>
       <p><?php echo htmlspecialchars($blog['blog_content']) ?></p>
-      <a href="#" class="text-underline">More info</a>
+      <a href="#" class="text-underline block mb-4">More info</a>
     <?php endforeach; ?>
   <?php endif; ?>
 

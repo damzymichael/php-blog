@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
     }
   };
 }
-
+pg_close($connection);
 ?>
 
 <!DOCTYPE html>

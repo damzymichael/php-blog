@@ -37,7 +37,6 @@ if (isset($_POST['submit'])) {
   }
 }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -56,6 +55,9 @@ if (isset($_POST['submit'])) {
     <input type="submit" name="submit" class="border bg-blue-700 self-center p-2 rounded-lg text-white">
   </form>
   <?php include('templates/footer.php') ?>
+  <script>
+    document.title = "Add Blog"
+  </script>
 </body>
 
 </html>
